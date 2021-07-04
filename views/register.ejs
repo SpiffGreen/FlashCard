@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/general.css">
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <div class="center">
+        <main>
+            <p class="moto">Learn Everywhere</p>
+            <form>
+                <label for="username">username</label>
+                <div class="inp">
+                    <span>👤</span>
+                    <input type="text" name="username" id="username" placeholder="username" aria-placeholder="username">
+                </div>
+                <br>
+                <label for="email">Email</label>
+                <div class="inp">
+                    <span>📧</span>
+                    <input type="text" name="email" id="email" placeholder="email" aria-placeholder="email">
+                </div>
+                <br>
+                <label for="password">Password</label>
+                <div class="inp">
+                    <span>🔑</span>
+                    <input type="password" name="password" id="password" placeholder="password" aria-placeholder="password">
+                </div>
+                <br>
+                <label for="password">Confirm Password</label>
+                <div class="inp">
+                    <span>🔑</span>
+                    <input type="password" name="password" id="confirm-password" placeholder="password" aria-placeholder="password">
+                </div>
+                <button type="submit" id="sub" disabled>Register</button>
+            </form>
+
+            <div class="moto" style="font-size: 15px;">
+                <p><input type="checkbox" name="agree" id="agree"> By signing up, you agree to our  <a href="/terms_and_conditions#terms">Terms of Use</a> and <a href="/terms_and_conditions#data-policies">Privacy Policy</a></p>
+                <a href="/login">Already Have an account?</a> <br>
+            </div>
+        </main>
+        <footer class="moto">
+            &copy;2021. All Rights Reserved.
+        </footer>
+    </div>
+
+    <script>
+         const chkAgree = document.getElementById("agree");
+         const subBtn = document.getElementById("sub");
+         chkAgree.addEventListener("change", (e) => {
+             subBtn.disabled = !e.target.checked;
+            });
+    </script>
+</body>
+</html>

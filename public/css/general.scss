@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    // background-color: rgb(102, 97, 97);
+    font-size: 17px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a {
+    // color: rgb(8, 27, 46);
+    color: rgb(32, 104, 177);
+    text-decoration: none;
+}
+
+.center {
+    margin: 0 auto;
+    width: 95%;
+    max-width: 600px;
+    padding: 20px 0 0 0;
+}
+
+hr {
+    border: 1px solid dodgerblue;
+}
+
+details {
+    outline: none;
+}

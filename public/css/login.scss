@@ -1,0 +1,47 @@
+.inp {
+    // background-color: rgb(212, 212, 212);
+    background-color: rgb(243, 243, 243);
+    display: flex;
+    padding: 8px 2px;
+    margin: 8px 0;
+    border-radius: 3px;
+}
+
+.inp span {
+    margin: 0 5px;
+}
+
+.inp input {
+    flex-grow: 1;
+    font-size: 18px;
+    padding: 5px;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.moto {
+    text-align: center;
+    margin: 5px 0;
+}
+
+button[type=submit] {
+    background: dodgerblue;
+    color: white;
+    padding: 10px 0;
+    margin: 20px 0;
+    border: none;
+    border-radius: 3px;
+    width: 100%;
+    font-size: 17px;
+}
+
+button:disabled {
+    filter: opacity(70%);
+}
+
+@media screen and (min-width: 500px) {
+    .inp {
+        border: 2px solid rgb(182, 182, 182);
+    }
+}
