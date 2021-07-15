@@ -10,12 +10,35 @@ window.addEventListener("DOMContentLoaded", runApp);
  * Apps Constants
  */
 let offset = 0;
-let main = null;
-const LIMIT = 10;
+let main = null, loader = null, isFetchCompleted = false;
+const LIMIT = 6;
 
 function runApp() {
     main = document.querySelector("main");
-    updateMain();
+    loader = document.querySelector(".loader");
+    // updateMain();
+
+    // Intersection observer
+    const observerOptions = {
+        root: null,
+        threshold: 0.3,
+    };
+
+    const mainObserver = new IntersectionObserver(handleLoad, observerOptions);
+    mainObserver.observe(loader);
+}
+
+function handleLoad(entries) {
+    const [entry] = entries;
+    if(entry.isIntersecting) {
+        if(!isFetchCompleted) {
+            loader.classList.toggle("hidden");
+            setTimeout(() => {
+                updateMain();
+                loader.classList.toggle("hidden");
+            }, 500);
+        }
+    }
 }
 
 async function updateMain() {
@@ -36,5 +59,7 @@ async function updateMain() {
 async function fetchCards() {
     const res = await fetch(`/cards?offset=${offset}&limit=${LIMIT}`);
     const data = await res.json();
-    return data;    
+    isFetchCompleted = data.isCompleted;
+    offset += LIMIT;
+    return data.data;    
 }

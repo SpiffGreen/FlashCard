@@ -116,7 +116,12 @@ app.get("/cards", checkAuth, async (req, res) => {
   const id = String(userID);
   const {offset, limit} = req.query;
   const result = await Card.aggregate([{$match: {"userId": id}}, {$sort: {"_id": -1}}, {$skip: Number(offset)}, {$limit: Number(limit)}, {$project: {question: 1, answer: 1}}]);
-  res.json(result);
+  const count = await Card.countDocuments({"userId": id});
+  const finalResult = {
+    data: result,
+    isCompleted: (offset + limit) >= count,
+  }
+  res.json(finalResult);
 });
 
 const PORT = process.env.PORT || 5000;

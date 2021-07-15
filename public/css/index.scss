@@ -94,6 +94,23 @@ main {
     width: 25px;
     height: 25px;
     margin: 20px auto;
+    animation-name: spin;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.hidden {
+    visibility: hidden;
 }
 
 footer {
