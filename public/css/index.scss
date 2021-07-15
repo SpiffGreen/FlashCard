@@ -87,6 +87,15 @@ main {
     }
 }
 
+.loader {
+    border-radius: 50%;
+    border: 2px solid rgb(32, 104, 177);
+    border-left: 1px solid transparent;
+    width: 25px;
+    height: 25px;
+    margin: 20px auto;
+}
+
 footer {
     text-align: center;
     margin: 5px 0;
