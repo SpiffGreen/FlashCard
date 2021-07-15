@@ -102,8 +102,6 @@ function checkNoAuth(req, res, next) {
 app.post("/add", checkAuth, async (req, res) => {
   const {question: q, answer: a} = req.body;
   const id = String(req.user["_id"]);
-  console.log("Id: ", id);
-  console.log("Type: ", typeof id);
   const card = new Card({
     question: q,
     answer: a,
@@ -116,11 +114,8 @@ app.post("/add", checkAuth, async (req, res) => {
 app.get("/cards", checkAuth, async (req, res) => {
   const {_id: userID} = req.user;
   const id = String(userID);
-  // console.log(_id);
-  // {$project: {_v: 1, userId: 1}},
-  // , {$sort: {"_id": -1}}, {$skip: Number(offset)}, {$limit: Number(limit)}
   const {offset, limit} = req.query;
-  const result = await Card.aggregate([{$match: {"userId": id}}]);
+  const result = await Card.aggregate([{$match: {"userId": id}}, {$sort: {"_id": -1}}, {$skip: Number(offset)}, {$limit: Number(limit)}, {$project: {question: 1, answer: 1}}]);
   res.json(result);
 });
 
