@@ -1,3 +1,7 @@
+:root {
+    color-scheme: light dark; /* both supported */
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -8,10 +12,13 @@ body, html {
     // background-color: rgb(102, 97, 97);
     font-size: 17px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    // background-blend-mode: screen, difference, lighten;
+    mix-blend-mode: auto;
 }
 
 a {
     // color: rgb(8, 27, 46);
+    // isolation: isolate;
     color: rgb(32, 104, 177);
     text-decoration: none;
 }
@@ -25,6 +32,11 @@ a {
 
 hr {
     border: 1px solid dodgerblue;
+}
+
+button,
+a {
+    cursor: pointer;
 }
 
 details {

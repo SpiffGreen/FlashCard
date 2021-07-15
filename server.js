@@ -61,13 +61,15 @@ app.post("/register", async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     const user = new User({
-        name: req.body.name,
+        name: req.body.username,
         email: req.body.email,
-        password: hashedPassword
+        password: hashedPassword,
+        role: "basic"
     });
     await user.save();
     res.redirect("/login");
-  } catch {
+  } catch(err) {
+    // console.log(err);
     res.redirect("/register");
   }
 });
@@ -95,6 +97,32 @@ function checkNoAuth(req, res, next) {
   }
   next();
 }
+
+// Special functions and routes
+app.post("/add", checkAuth, async (req, res) => {
+  const {question: q, answer: a} = req.body;
+  const id = String(req.user["_id"]);
+  console.log("Id: ", id);
+  console.log("Type: ", typeof id);
+  const card = new Card({
+    question: q,
+    answer: a,
+    userId: id,
+  });
+  await card.save();
+  res.redirect("/");
+});
+
+app.get("/cards", checkAuth, async (req, res) => {
+  const {_id: userID} = req.user;
+  const id = String(userID);
+  // console.log(_id);
+  // {$project: {_v: 1, userId: 1}},
+  // , {$sort: {"_id": -1}}, {$skip: Number(offset)}, {$limit: Number(limit)}
+  const {offset, limit} = req.query;
+  const result = await Card.aggregate([{$match: {"userId": id}}]);
+  res.json(result);
+});
 
 const PORT = process.env.PORT || 5000;
 

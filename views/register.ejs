@@ -12,7 +12,7 @@
     <div class="center">
         <main>
             <p class="moto">Learn Everywhere</p>
-            <form>
+            <form id="regForm" method="POST" action="/register">
                 <label for="username">username</label>
                 <div class="inp">
                     <span>👤</span>
@@ -34,7 +34,7 @@
                 <label for="password">Confirm Password</label>
                 <div class="inp">
                     <span>🔑</span>
-                    <input type="password" name="password" id="confirm-password" placeholder="password" aria-placeholder="password">
+                    <input type="password" name="password2" id="confirm-password" placeholder="password" aria-placeholder="password">
                 </div>
                 <button type="submit" id="sub" disabled>Register</button>
             </form>
@@ -49,12 +49,6 @@
         </footer>
     </div>
 
-    <script>
-         const chkAgree = document.getElementById("agree");
-         const subBtn = document.getElementById("sub");
-         chkAgree.addEventListener("change", (e) => {
-             subBtn.disabled = !e.target.checked;
-            });
-    </script>
+    <script src="/js/register.js" type="module"></script>
 </body>
 </html>

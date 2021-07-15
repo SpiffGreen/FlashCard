@@ -1,1 +1,129 @@
-Index
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlashCard</title>
+    <link rel="stylesheet" href="/css/general.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+    <div class="main-layout">
+        <!-- Nav Section -->
+        <nav id="navTop">
+            <h3 class="logo">FlashCard</h3>
+            
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+
+            <ul class="nav-links">
+                <!-- <li><a href="">Add</a></li> -->
+                <li><a href="#">Share</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+
+            <!-- navigate to top -->
+            <a href="#"></a>
+        </nav>
+
+        <header class="board">
+            <h3 class="greeting">Welcome <%= name %>😎</h3>
+            <!-- Adding FlashCard -->
+            <p>Create a flash card</p><br>
+            <form action="/add" method="POST">
+                <textarea name="question" id="question" placeholder="Enter question here(html is allowed for editing)..."></textarea>
+                <br>
+                <input type="text" name="answer" id="answer" placeholder="Place your answer here...">
+                <button type="submit" class="subBtn">Add FlashCard</button>
+            </form>
+        </header>
+
+        <main>
+            <!-- Cards section -->
+            <div class="card">
+                <p>What is an OS?</p>
+                <button class="showAnswer">Show Answer</button><span class="slash">/</span><button class="edit">Edit</button>
+            </div>
+            <div class="card">
+                <p>Mention five types of OS</p>
+                <button class="showAnswer">Show Answer</button><span class="slash">/</span><button class="edit">Edit</button>
+            </div>
+            <div class="card">
+                <p>Explain the MVC Pattern</p>
+                <button class="showAnswer">Show Answer</button><span class="slash">/</span><button class="edit">Edit</button>
+            </div>
+            <div class="card">
+                <p>List top 10 design patterns you know</p>
+                <button class="showAnswer">Show Answer</button><span class="slash">/</span><button class="edit">Edit</button>
+            </div>
+            <div class="card">
+                <p>List top 10 design patterns you know</p>
+                <button class="showAnswer">Show Answer</button><span class="slash">/</span><button class="edit">Edit</button>
+            </div>
+            <div class="card">
+                <p>List top 10 design patterns you know</p>
+                <button class="showAnswer">Show Answer</button><span class="slash">/</span><button class="edit">Edit</button>
+            </div>
+            <div class="card">
+                <p>List top 10 design patterns you know</p>
+                <button class="showAnswer">Show Answer</button><span class="slash">/</span><button class="edit">Edit</button>
+            </div>
+            <div class="card">
+                <p>List top 10 design patterns you know</p>
+                <button class="showAnswer">Show Answer</button><span class="slash">/</span><button class="edit">Edit</button>
+            </div>
+            <div class="card">
+                <p>List top 10 design patterns you know</p>
+                <button class="showAnswer">Show Answer</button><span class="slash">/</span><button class="edit">Edit</button>
+            </div>
+            <div class="card">
+                <p>List top 10 design patterns you know</p>
+                <button class="showAnswer">Show Answer</button><span class="slash">/</span><button class="edit">Edit</button>
+            </div>
+            <div class="card">
+                <p>List top 10 design patterns you know</p>
+                <button class="showAnswer">Show Answer</button><span class="slash">/</span><button class="edit">Edit</button>
+            </div>
+            <div class="card">
+                <p>List top 10 design patterns you know</p>
+                <button class="showAnswer">Show Answer</button><span class="slash">/</span><button class="edit">Edit</button>
+            </div>
+            <div class="card">
+                <p>List top 10 design patterns you know</p>
+                <button class="showAnswer">Show Answer</button><span class="slash">/</span><button class="edit">Edit</button>
+            </div>
+            <div class="card">
+                <p>List top 10 design patterns you know</p>
+                <button class="showAnswer">Show Answer</button><span class="slash">/</span><button class="edit">Edit</button>
+            </div>
+            <div class="card">
+                <p>List top 10 design patterns you know</p>
+                <button class="showAnswer">Show Answer</button><span class="slash">/</span><button class="edit">Edit</button>
+            </div>
+            <div class="card">
+                <p>List top 10 design patterns you know</p>
+                <button class="showAnswer">Show Answer</button><span class="slash">/</span><button class="edit">Edit</button>
+            </div>
+            <div class="card">
+                <p>List top 10 design patterns you know</p>
+                <button class="showAnswer">Show Answer</button><span class="slash">/</span><button class="edit">Edit</button>
+            </div>
+            <div class="card">
+                <p>What is a Distributed OS?</p>
+                <button class="showAnswer">Show Answer</button><span class="slash">/</span><button class="edit">Edit</button>
+            </div>
+        </main>
+
+        <!-- Footer Section -->
+        <footer class="moto">
+            &copy;2021. All Rights Reserved.
+        </footer>
+    </div>
+    
+</body>
+</html>

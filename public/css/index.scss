@@ -1,0 +1,93 @@
+.main-layout {
+    max-width: 1094px;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+nav {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    width: 50%;
+}
+
+header.board {
+    padding-top: 80px;
+    .greeting {
+        margin-bottom: 20px;
+    }
+    #question {
+        padding: 3px 7px;
+        font-size: 18px;
+        border-radius: 0;
+        border: none;
+    }
+    #answer {
+        padding: 3px 7px;
+        border: none;
+        font-size: 18px;
+    }
+    .subBtn {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 6px 0;
+        border: none;
+        outline: none;  
+        border-radius: 3px;
+        color: white;
+        background-color: rgb(32, 104, 177);
+    }
+    form > * {
+        width: 100%;
+    }
+}
+
+main {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-gap: 2px;
+    margin-top: 12px;
+}
+.card {
+    min-height: 80px;
+    padding: 3px;
+    button {
+        margin-top: 10px;
+        background: none;
+        border: none;
+        outline: none;
+        font-size: 17px;
+        color: rgb(32, 104, 177);
+    }
+    .slash {
+        color:rgb(32, 104, 177);
+    }
+}
+
+@media screen and (max-width: 802px) {
+    main {
+        grid-template-columns: repeat(2, auto);
+    }
+}
+
+@media screen and (max-width: 450px) {
+    main {
+        grid-template-columns: auto;
+    }
+}
+
+footer {
+    text-align: center;
+    margin: 5px 0;
+}
