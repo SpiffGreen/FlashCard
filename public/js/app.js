@@ -76,6 +76,7 @@ async function updateMain() {
             showButton.addEventListener("click", () => {
                 modalInput.value = i._id;
                 modalAnswer.innerHTML = i.answer;
+                modalAnswer.blur();
                 modalBtn.click();
             });
 
