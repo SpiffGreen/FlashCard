@@ -7,7 +7,7 @@ const express = require("express");
 const app = express();
 
 require("./config/db");
-const { SESSION_SECRET } = require("./config/secret");
+// const { SESSION_SECRET } = require("./config/secret");
 
 // DB Models
 const User = require("./models/User");
@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(flash());
 app.use(
     session({
-        secret: SESSION_SECRET,
+        secret: process.env.SESSION_SECRET,
         resave: false,
         saveUninitialized: false,
     })
