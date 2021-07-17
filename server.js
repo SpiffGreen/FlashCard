@@ -58,23 +58,29 @@ app.get("/register", checkNoAuth, (req, res) => {
 });
 
 app.post("/register", async (req, res) => {
-  try {
-    const hashedPassword = await bcrypt.hash(req.body.password, 10);
-    const user = new User({
-        name: req.body.username,
-        email: req.body.email,
-        password: hashedPassword,
-        role: "basic"
-    });
-    await user.save();
-    res.redirect("/login");
-  } catch(err) {
-    // console.log(err);
+  if(!validData(req.body)) {
+    console.log(req.body);
     res.redirect("/register");
+  }
+  else {
+    try {
+      const hashedPassword = await bcrypt.hash(req.body.password, 10);
+      const user = new User({
+          name: req.body.username,
+          email: req.body.email,
+          password: hashedPassword,
+          role: "basic"
+      });
+      await user.save();
+      res.redirect("/login");
+    } catch(err) {
+      console.log(err);
+      res.redirect("/register");
+    }
   }
 });
 
-app.post("/logout", (req, res) => {
+app.get("/logout", (req, res) => {
   req.logOut();
   res.redirect("/login");
 });
@@ -100,7 +106,17 @@ function checkNoAuth(req, res, next) {
 
 // Special functions and routes
 app.post("/add", checkAuth, async (req, res) => {
-  const {question: q, answer: a} = req.body;
+  const {question, answer} = req.body;
+  const q = question.replace(/<\s*script\s*\s*>/gi, (i) => {
+              return i.replace("<", "&lt;").replace(">", "&gt;");
+            }).replace(/<\s*\/\s*script[^>]*>/gi, (i) => {
+              return i.replace("<", "&lt;").replace(">", "&gt;");
+          });
+  const a = answer.replace(/<\s*script\s*\s*>/gi, (i) => {
+              return i.replace("<", "&lt;").replace(">", "&gt;");
+          }).replace(/<\s*\/\s*script[^>]*>/gi, (i) => {
+              return i.replace("<", "&lt;").replace(">", "&gt;");
+          })
   const id = String(req.user["_id"]);
   const card = new Card({
     question: q,
@@ -115,6 +131,7 @@ app.get("/cards", checkAuth, async (req, res) => {
   const {_id: userID} = req.user;
   const id = String(userID);
   const {offset, limit} = req.query;
+  // db.cards.find({"userId": "60ef53e36aeacb29449d917a"}, {question: 1, answer: 1}).sort({"_id": -1}).skip(1).limit(3)
   const result = await Card.aggregate([{$match: {"userId": id}}, {$sort: {"_id": -1}}, {$skip: Number(offset)}, {$limit: Number(limit)}, {$project: {question: 1, answer: 1}}]);
   const count = await Card.countDocuments({"userId": id});
   const finalResult = {
@@ -123,6 +140,18 @@ app.get("/cards", checkAuth, async (req, res) => {
   }
   res.json(finalResult);
 });
+
+function validData(reqBody) {
+  const {password: pass1, password2: pass2, email, username} = reqBody;
+  if(pass1 !== pass2) return false;
+  if(pass1.search(/\$|\^|#|_|@|!|%|&/g) === -1) return false;
+  if(pass1.search(/[0-9]+/g) === -1) return false;
+  if(pass1.search(/[A-Z]+/g) === -1) return false;
+  if(pass1.search(/[a-z]+/g) === -1) return false;
+  if(email.search(/[a-zA-Z0-9_]+\.*[a-zA-Z0-9_]+@[a-zA-Z0-9_]+\.+[a-zA-Z0-9_]+/g) === -1) false;
+  if(username.length < 5) return false;
+  return true;
+}
 
 const PORT = process.env.PORT || 5000;
 

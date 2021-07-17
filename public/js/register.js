@@ -1,31 +1,22 @@
 import elements from "./elements.js";
 
 const chkAgree = document.getElementById("agree");
-const form = document.getElementById("regForm");
 const subBtn = document.getElementById("sub");
 chkAgree.addEventListener("change", (e) => {
-    subBtn.disabled = !e.target.checked;
+    if(validData()) {
+        subBtn.disabled = !e.target.checked;
+    }
 });
 
-// form.addEventListener("submit", (e) => {
-//     e.preventDefault();
-//     sendCredentials();
-// })
-
-// async function sendCredentials() {
-//     const data = {
-//         name: elements.username.value,
-//         email: elements.email.value,
-//         password: elements.pass1.value
-//     };
-
-//     const res = await fetch("/register", {
-//         method: "POST",
-//         body: JSON.stringify(data),
-//         header: {
-//             "Content-Type": "application/json"
-//         }
-//     });
-//     const result = await res.json();
-//     console.log(result);
-// }
+function validData() {
+    let valid = true;
+    if(elements["pass1"].value !== elements["pass2"].value) valid = false;
+    if(!(elements["pass1"].value.length > 6 && elements["pass2"].length > 6)) valid = false;
+    if(elements["pass1"].value.search(/\$|\^|#|_|@|!|%|&/g) === -1) valid = false;
+    if(elements["pass1"].value.search(/[0-9]+/g) === -1) valid = false;
+    if(elements["pass1"].value.search(/[A-Z]+/g) === -1) valid = false;
+    if(elements["pass1"].value.search(/[a-z]+/g) === -1) valid = false;
+    if(elements["email"].value.search(/[a-zA-Z0-9_]+\.*[a-zA-Z0-9_]+@[a-zA-Z0-9_]+\.+[a-zA-Z0-9_]+/g) === -1) valid = false;
+    if(elements["username"].value.length < 5) valid = false;
+    return valid;
+}

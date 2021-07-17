@@ -8,29 +8,32 @@
     <link rel="stylesheet" href="/css/general.css">
     <link rel="stylesheet" href="/css/index.css">
     <script src="/js/app.js" defer></script>
+    <!-- <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script> -->
+    <script src="/js/micromodal.min.js"></script>
 </head>
 <body>
     <div class="main-layout">
         <!-- Nav Section -->
         <nav id="navTop">
             <h3 class="logo">FlashCard</h3>
-            
-            <div class="burger">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
-            </div>
 
-            <ul class="nav-links">
+            <ul class="nav-links hide-show">
                 <!-- <li><a href="">Add</a></li> -->
                 <li><a href="#">Share</a></li>
                 <li><a href="#">Settings</a></li>
                 <li><a href="/logout">Logout</a></li>
             </ul>
 
-            <!-- navigate to top -->
-            <a href="#"></a>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+
         </nav>
+        
+        <!-- navigate to top -->
+        <!-- <a href="#"></a> -->
 
         <header class="board">
             <h3 class="greeting">Welcome <%= name %>😎</h3>
@@ -44,84 +47,13 @@
             </form>
         </header>
 
+        <button class="modalBtn" type="hidden" data-micromodal-trigger="modal-1">Open Modal</button>
         <main>
-            <!-- Cards section -->
-            <!-- <div class="card">
-                <p>What is an OS?</p>
-                <button class="showAnswer">Show Answer</button><span class="slash">/</span><button class="edit">Edit</button>
-            </div>
-            <div class="card">
-                <p>Mention five types of OS</p>
-                <button class="showAnswer">Show Answer</button><span class="slash">/</span><button class="edit">Edit</button>
-            </div>
-            <div class="card">
-                <p>Explain the MVC Pattern</p>
-                <button class="showAnswer">Show Answer</button><span class="slash">/</span><button class="edit">Edit</button>
-            </div>
-            <div class="card">
-                <p>List top 10 design patterns you know</p>
-                <button class="showAnswer">Show Answer</button><span class="slash">/</span><button class="edit">Edit</button>
-            </div>
-            <div class="card">
-                <p>List top 10 design patterns you know</p>
-                <button class="showAnswer">Show Answer</button><span class="slash">/</span><button class="edit">Edit</button>
-            </div>
-            <div class="card">
-                <p>List top 10 design patterns you know</p>
-                <button class="showAnswer">Show Answer</button><span class="slash">/</span><button class="edit">Edit</button>
-            </div>
-            <div class="card">
-                <p>List top 10 design patterns you know</p>
-                <button class="showAnswer">Show Answer</button><span class="slash">/</span><button class="edit">Edit</button>
-            </div>
-            <div class="card">
-                <p>List top 10 design patterns you know</p>
-                <button class="showAnswer">Show Answer</button><span class="slash">/</span><button class="edit">Edit</button>
-            </div>
-            <div class="card">
-                <p>List top 10 design patterns you know</p>
-                <button class="showAnswer">Show Answer</button><span class="slash">/</span><button class="edit">Edit</button>
-            </div>
-            <div class="card">
-                <p>List top 10 design patterns you know</p>
-                <button class="showAnswer">Show Answer</button><span class="slash">/</span><button class="edit">Edit</button>
-            </div>
-            <div class="card">
-                <p>List top 10 design patterns you know</p>
-                <button class="showAnswer">Show Answer</button><span class="slash">/</span><button class="edit">Edit</button>
-            </div>
-            <div class="card">
-                <p>List top 10 design patterns you know</p>
-                <button class="showAnswer">Show Answer</button><span class="slash">/</span><button class="edit">Edit</button>
-            </div>
-            <div class="card">
-                <p>List top 10 design patterns you know</p>
-                <button class="showAnswer">Show Answer</button><span class="slash">/</span><button class="edit">Edit</button>
-            </div>
-            <div class="card">
-                <p>List top 10 design patterns you know</p>
-                <button class="showAnswer">Show Answer</button><span class="slash">/</span><button class="edit">Edit</button>
-            </div>
-            <div class="card">
-                <p>List top 10 design patterns you know</p>
-                <button class="showAnswer">Show Answer</button><span class="slash">/</span><button class="edit">Edit</button>
-            </div>
-            <div class="card">
-                <p>List top 10 design patterns you know</p>
-                <button class="showAnswer">Show Answer</button><span class="slash">/</span><button class="edit">Edit</button>
-            </div>
-            <div class="card">
-                <p>List top 10 design patterns you know</p>
-                <button class="showAnswer">Show Answer</button><span class="slash">/</span><button class="edit">Edit</button>
-            </div>
-            <div class="card">
-                <p>What is a Distributed OS?</p>
-                <button class="showAnswer">Show Answer</button><span class="slash">/</span><button class="edit">Edit</button>
-            </div> -->
+            <!-- Cards section -->      
         </main>
 
         <div class="loader-area">
-            <div class="loader hidden"></div>
+            <div class="loader"></div>
         </div>
 
         <!-- Footer Section -->
@@ -130,5 +62,50 @@
         </footer>
     </div>
     
+    <!-- [1] -->
+    <!-- <div id="modal-1" aria-hidden="true">
+      <div tabindex="-1" data-micromodal-close>
+      <div role="dialog" aria-modal="true" aria-labelledby="modal-1-title" >
+          <header>
+          <h2 id="modal-1-title">
+              Modal Title
+          </h2>
+          <button aria-label="Close modal" data-micromodal-close></button>
+          </header>
+          <div id="modal-1-content">
+          Modal Content
+          </div>
+      </div>
+      </div>
+    </div> -->
+  <!-- Modal -->
+  <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
+    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+      <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+        <header class="modal__header">
+          <h2 class="modal__title" id="modal-1-title">
+            Answer
+          </h2>
+          <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+        </header>
+        <main class="modal__content" id="modal-1-content">
+          <input type="hidden" name="id" class="modalInput">
+          <div class="modalAnswer" contenteditable="true">
+            Try hitting the <code>tab</code> key and notice how the focus stays within the modal itself. Also, <code>esc</code> to close modal.
+          </div>
+          <p class="modalInstruction">Click to edit</p>
+        </main>
+        <footer class="modal__footer">
+          <button class="modal__btn modal__btn-primary">Submit</button>
+          <button class="modal__btn modal_btn-danger">Delete</button>
+          <button class="modal__btn modal_btn-gray" data-micromodal-close aria-label="Close this dialog window">Close</button>
+        </footer>
+      </div>
+    </div>
+  </div>
+  <!-- Scripts -->
+  <script>
+      MicroModal.init();
+  </script>
 </body>
 </html>
