@@ -10,7 +10,7 @@ window.addEventListener("DOMContentLoaded", runApp);
  * Apps Constants
  */
 let offset = 0;
-let main = null, navLinks = modalBtn = modalTitle = modalAnswer = modalInput, modalQuestion = null;  // Variables prepared to hold DOM elements
+let main = null, navLinks = modalBtn = modalTitle = modalEdit = modalDelete = modalAnswer = modalInput = modalQuestion = null;  // Variables prepared to hold DOM elements
 let loader = null, isFetchCompleted = false, isMenuOpen = false;
 const LIMIT = 6;
 
@@ -25,6 +25,8 @@ function runApp() {
     modalAnswer = document.querySelector(".modalAnswer");
     modalQuestion = document.querySelector(".modalQuestion");
     modalInput = document.querySelector(".modalInput");
+    modalDelete = document.querySelector(".deleteFlash");
+    modalEdit = document.querySelector(".editFlash");
     // console.log(modalContent);
     
     // Intersection observer
@@ -35,6 +37,8 @@ function runApp() {
 
     const mainObserver = new IntersectionObserver(handleLoad, observerOptions);
     mainObserver.observe(loader);
+
+    if(innerWidth > 550) toggleMenu();
 }
 
 function handleLoad(entries) {
@@ -42,9 +46,9 @@ function handleLoad(entries) {
     if(entry.isIntersecting) {
         if(!isFetchCompleted) {
             // loader.classList.toggle("hidden");
-            loader.style.visibily = "visible";
-            setTimeout(() => {
-                updateMain();
+                loader.style.visibily = "visible";
+                setTimeout(() => {
+                    updateMain();
                 loader.style.visibility = "hidden";
             }, 500);
         }
@@ -78,9 +82,11 @@ async function updateMain() {
                 console.log(i);
                 modalInput.value = i._id;
                 modalAnswer.innerHTML = i.answer;
-                modalQuestion.innerText = i.question;
+                modalQuestion.innerHTML = i.question;
                 modalAnswer.blur();
                 modalBtn.click();
+                modalDelete.addEventListener("click", () => deleteFlashItem(i._id));
+                modalEdit.addEventListener("click", () => editFlashItem(i._id));
             });
 
             // Add elements to div
@@ -104,4 +110,28 @@ function toggleMenu() {
     children[0].classList.toggle("bend1");
     children[2].classList.toggle("bend2");
     navLinks.classList.toggle("hide-show");
+}
+
+function deleteFlashItem(id) {
+    fetch("/delete", {
+        method: "POST",
+        body: JSON.stringify({data: id}),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+    window.location.reload();
+}
+
+function editFlashItem(id) {
+    const answer = modalAnswer.innerText;
+    const question = modalQuestion.innerText;
+    fetch("/edit", {
+        method: "POST",
+        body: JSON.stringify({id, answer, question}),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+    window.location.reload();
 }

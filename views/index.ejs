@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FlashCard</title>
+    <title>LearnCard | Easy learning with flash cards</title>
     <link rel="stylesheet" href="/css/general.min.css">
     <link rel="stylesheet" href="/css/index.min.css">
     <script src="/js/app.js" defer></script>
@@ -12,10 +12,10 @@
     <script src="/js/micromodal.min.js"></script>
 </head>
 <body>
-    <div class="main-layout">
+    <div class="main-layout"
         <!-- Nav Section -->
         <nav id="navTop">
-            <h3 class="logo">FlashCard</h3>
+            <h3 class="logo">LearnCard</h3>
 
             <ul class="nav-links hide-show">
                 <!-- <li><a href="">Add</a></li> -->
@@ -84,21 +84,23 @@
       <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
         <header class="modal__header">
           <h2 class="modal__title" id="modal-1-title">
-            Answer
+            LearnCard
           </h2>
           <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
         </header>
         <main class="modal__content" id="modal-1-content">
           <input type="hidden" name="id" class="modalInput">
-          <div class="modalQuestion">The question</div>
+          <p>Question</p>
+          <div class="modalQuestion" contenteditable="true">The question</div>
+          <p>Answer</p>
           <div class="modalAnswer" contenteditable="true">
             Try hitting the <code>tab</code> key and notice how the focus stays within the modal itself. Also, <code>esc</code> to close modal.
           </div>
           <p class="modalInstruction">Click to edit</p>
         </main>
         <footer class="modal__footer">
-          <button class="modal__btn modal__btn-primary">Submit</button>
-          <button class="modal__btn modal_btn-danger">Delete</button>
+          <button class="modal__btn modal__btn-primary editFlash">Submit</button>
+          <button class="modal__btn modal_btn-danger deleteFlash">Delete</button>
           <button class="modal__btn modal_btn-gray" data-micromodal-close aria-label="Close this dialog window">Close</button>
         </footer>
       </div>

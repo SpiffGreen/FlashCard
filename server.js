@@ -141,6 +141,18 @@ app.get("/cards", checkAuth, async (req, res) => {
   res.json(finalResult);
 });
 
+app.post("/delete", checkAuth, async (req, res) => {
+  console.log(req.body);
+  await Card.deleteOne({_id: req.body.data});
+  res.json({success: true});
+});
+
+app.post("/edit", checkAuth, async (req, res) => {
+  const {id, answer, question} = req.body;
+  await Card.updateOne({_id: id}, {answer, question});
+  res.json({success: true});
+});
+
 function validData(reqBody) {
   const {password: pass1, password2: pass2, email, username} = reqBody;
   if(pass1 !== pass2) return false;

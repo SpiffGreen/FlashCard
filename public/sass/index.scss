@@ -343,6 +343,11 @@ footer {
     padding: 4px;
 }
 
+.modalQuestion {
+    color: rgb(192, 191, 191);
+    // pa
+}
+
 .modalAnswer:focus {
     border:rgb(32, 104, 177);
     // outline: none;
@@ -350,11 +355,14 @@ footer {
 
 main.modal__content {
     display: block;
+    p {
+        color: rgb(32, 104, 177);
+    }
 }
 
 .modalInstruction {
     font-size: 14px;
-    color: grey;
+    color: grey !important;
     margin-top: 10px;
 }
 
@@ -367,3 +375,9 @@ main.modal__content {
     background-color: red;
     color: #fff;
 }
+
+/* .modal__content {
+    p {
+        color: rgb(192, 191, 191);
+    }
+} */
