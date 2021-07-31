@@ -17,7 +17,7 @@ const Card = require("./models/Card");
 const initializePassport = require("./passport-config");
 initializePassport(passport);
 
-app.set("view eengine", "ejs");
+app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));

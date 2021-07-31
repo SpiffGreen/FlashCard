@@ -10,7 +10,7 @@ window.addEventListener("DOMContentLoaded", runApp);
  * Apps Constants
  */
 let offset = 0;
-let main = null, navLinks = modalBtn = modalTitle = modalAnswer = modalInput = null;  // Variables prepared to hold DOM elements
+let main = null, navLinks = modalBtn = modalTitle = modalAnswer = modalInput, modalQuestion = null;  // Variables prepared to hold DOM elements
 let loader = null, isFetchCompleted = false, isMenuOpen = false;
 const LIMIT = 6;
 
@@ -23,6 +23,7 @@ function runApp() {
     modalBtn = document.querySelector(".modalBtn");
     modalTitle = document.querySelector(".modal__title");
     modalAnswer = document.querySelector(".modalAnswer");
+    modalQuestion = document.querySelector(".modalQuestion");
     modalInput = document.querySelector(".modalInput");
     // console.log(modalContent);
     
@@ -74,8 +75,10 @@ async function updateMain() {
             showButton.innerText = "Show Answer";
             showButton.setAttribute("class", "showAnswer");
             showButton.addEventListener("click", () => {
+                console.log(i);
                 modalInput.value = i._id;
                 modalAnswer.innerHTML = i.answer;
+                modalQuestion.innerText = i.question;
                 modalAnswer.blur();
                 modalBtn.click();
             });

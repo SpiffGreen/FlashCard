@@ -127,6 +127,9 @@ main {
 .card {
     min-height: 80px;
     padding: 3px;
+    border: 2.2px solid rgb(32, 104, 177);
+    border-radius: 5px;
+    margin: 3px;
     button {
         margin-top: 10px;
         background: none;
