@@ -1,4 +1,1 @@
-:root {
-    color-scheme: light dark; /* both supported */
-}
-*{margin:0;padding:0;box-sizing:border-box}body,html{font-size:17px;font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif}a{color:#2068b1;text-decoration:none}/*# sourceMappingURL=general.min.css.map */n:0 auto;width:95%;max-width:600px;padding:20px 0 0 0}hr{border:1px solid #1e90ff}button,a{cursor:pointer}details{outline:none}/*# sourceMappingURL=general.min.css.map */
+:root{color-scheme:light dark}*{margin:0;padding:0;box-sizing:border-box}body,html{font-size:17px;font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif}a{color:#2068b1;text-decoration:none}.center{margin:0 auto;width:95%;max-width:600px;padding:20px 0 0 0}hr{border:1px solid #1e90ff}button,a{cursor:pointer}details{outline:none}/*# sourceMappingURL=general.min.css.map */

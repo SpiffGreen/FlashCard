@@ -97,7 +97,7 @@ async function updateMain() {
 }
 
 async function fetchCards() {
-    const res = await fetch(`/cards?offset=${offset}&limit=${LIMIT}`);
+    const res = await fetch(`/api/cards?offset=${offset}&limit=${LIMIT}`);
     const data = await res.json();
     isFetchCompleted = data.isCompleted;
     offset += LIMIT;
@@ -113,7 +113,7 @@ function toggleMenu() {
 }
 
 function deleteFlashItem(id) {
-    fetch("/delete", {
+    fetch("/api/delete", {
         method: "POST",
         body: JSON.stringify({data: id}),
         headers: {
@@ -126,7 +126,7 @@ function deleteFlashItem(id) {
 function editFlashItem(id) {
     const answer = modalAnswer.innerText;
     const question = modalQuestion.innerText;
-    fetch("/edit", {
+    fetch("/api/edit", {
         method: "POST",
         body: JSON.stringify({id, answer, question}),
         headers: {

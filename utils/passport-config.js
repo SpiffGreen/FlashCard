@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 
 // Specials
 const mongoose = require("mongoose");
-const User = require("./models/User");
+const User = require("../models/User");
 
 async function idUser(id) {
     const user = await User.findById(id);
@@ -13,7 +13,6 @@ async function idUser(id) {
 function initialize(passport) {
   const authenticateUser = async (email, password, done) => {
     const user = await User.findOne({ email });
-    // console.log("Login: ", user);
     if(user == null) {
       return done(null, false, { message: "No user with that email" });
     }
