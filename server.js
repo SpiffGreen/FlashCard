@@ -142,7 +142,6 @@ app.get("/cards", checkAuth, async (req, res) => {
 });
 
 app.post("/delete", checkAuth, async (req, res) => {
-  console.log(req.body);
   await Card.deleteOne({_id: req.body.data});
   res.json({success: true});
 });
