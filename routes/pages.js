@@ -1,7 +1,8 @@
 const router = require("express").Router();
 const bcrypt = require("bcrypt");
-const { checkAuth, checkNoAuth } = require("../utils");
+const { checkAuth, checkNoAuth, validData } = require("../utils");
 const passport = require("passport");
+const User = require("../models/User");
 
 router.get("/", checkAuth, (req, res) => {
   res.render("index.ejs", {
