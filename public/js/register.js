@@ -3,8 +3,10 @@ import elements from "./elements.js";
 const chkAgree = document.getElementById("agree");
 const subBtn = document.getElementById("sub");
 chkAgree.addEventListener("change", (e) => {
-    if(validData()) {
-        subBtn.disabled = !e.target.checked;
+    if((elements["pass1"].value === elements["pass2"].value) && (elements["pass1"].value.length > 6)) {
+        subBtn.disabled = false;
+    } else {
+        subBtn.disabled = true;
     }
 });
 
